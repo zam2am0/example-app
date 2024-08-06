@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route; /**هذه لازم تكون موجودة */
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route; /**هذه لازم تكون موجودة *
 |
 */
 
-Route::get('/', function () { /* '/' -> mean the main page */
-    return view('welcome'); /*what mean? go to resourse folder then views then welcome */
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/services',function(){
-    return "This is the service" ; /**هنا يطلع لي هذه العبارة مباشرة */
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
